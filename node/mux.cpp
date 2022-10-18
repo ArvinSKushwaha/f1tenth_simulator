@@ -124,11 +124,11 @@ public:
         add_channel(nav_drive_topic, drive_topic, nav_mux_idx);
 
         // ***Add a channel for a new planner here**
-        // int new_mux_idx;
-        // std::string new_drive_topic;
-        // n.getParam("new_drive_topic", new_drive_topic);
-        // n.getParam("new_mux_idx", new_mux_idx);
-        // add_channel(new_drive_topic, drive_topic, new_mux_idx);
+        int pure_pursuit_mux_idx;
+        std::string pure_pursuit_drive_topic;
+        n.getParam("pure_pursuit_drive_topic", pure_pursuit_drive_topic);
+        n.getParam("pure_pursuit_mux_idx", pure_pursuit_mux_idx);
+        add_channel(pure_pursuit_drive_topic, drive_topic, pure_pursuit_mux_idx);
     }
 
     void add_channel(std::string channel_name, std::string drive_topic, int mux_idx_) {

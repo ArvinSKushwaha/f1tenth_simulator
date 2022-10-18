@@ -39,7 +39,7 @@ private:
     int nav_mux_idx;
     int brake_mux_idx;
     // ***Add mux index for new planner here***
-    // int new_mux_idx;
+    int pure_pursuit_mux_idx;
 
     // Mux controller array
     std::vector<bool> mux_controller;
@@ -52,7 +52,7 @@ private:
     int brake_button_idx;
     int nav_button_idx;
     // ***Add button index for new planner here***
-    // int new_button_idx;
+    int pure_pursuit_button_idx;
 
     // Key indices
     std::string joy_key_char;
@@ -61,7 +61,7 @@ private:
     std::string random_walk_key_char;
     std::string nav_key_char;
     // ***Add key char for new planner here***
-    // int new_key_char;
+    std::string pure_pursuit_key_char;
 
     // Is ebrake on? (not engaged, but on)
     bool safety_on;
@@ -118,7 +118,7 @@ public:
         n.getParam("brake_mux_idx", brake_mux_idx);
         n.getParam("nav_mux_idx", nav_mux_idx);
         // ***Add mux index for new planner here***
-        // n.getParam("new_mux_idx", new_mux_idx);
+        n.getParam("pure_pursuit_mux_idx", pure_pursuit_mux_idx);
 
         // Get button indices
         n.getParam("joy_button_idx", joy_button_idx);
@@ -127,7 +127,7 @@ public:
         n.getParam("brake_button_idx", brake_button_idx);
         n.getParam("nav_button_idx", nav_button_idx);
         // ***Add button index for new planner here***
-        // n.getParam("new_button_idx", new_button_idx);
+        n.getParam("pure_pursuit_button_idx", pure_pursuit_button_idx);
 
         // Get key indices
         n.getParam("joy_key_char", joy_key_char);
@@ -136,7 +136,7 @@ public:
         n.getParam("brake_key_char", brake_key_char);
         n.getParam("nav_key_char", nav_key_char);
         // ***Add key char for new planner here***
-        // n.getParam("new_key_char", new_key_char);
+        n.getParam("pure_pursuit_key_char", pure_pursuit_key_char);
 
         // Initialize the mux controller 
         n.getParam("mux_size", mux_size);
@@ -313,10 +313,10 @@ public:
             toggle_mux(nav_mux_idx, "Navigation");
         }
         // ***Add new else if statement here for new planning method***
-        // if (msg.buttons[new_button_idx]) {
-        //  // new planner
-        //  toggle_mux(new_mux_idx, "New Planner");
-        // }
+        if (msg.buttons[pure_pursuit_button_idx]) {
+            // new planner
+            toggle_mux(pure_pursuit_mux_idx, "Pure Pursuit");
+        }
 
     }
 
@@ -346,10 +346,10 @@ public:
             toggle_mux(nav_mux_idx, "Navigation");
         }
         // ***Add new else if statement here for new planning method***
-        // if (msg.data == new_key_char) {
-        //  // new planner
-        //  toggle_mux(new_mux_idx, "New Planner");
-        // }
+        else if (msg.data == pure_pursuit_key_char) {
+           // new planner
+           toggle_mux(pure_pursuit_mux_idx, "Pure Pursuit");
+        }
 
     }
 
