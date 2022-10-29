@@ -65,13 +65,12 @@
     <param name="laser_likelihood_max_dist" value="2.0"/>
     <param name="update_min_d" value="0.2"/>
     <param name="update_min_a" value="0.5"/>
-    <param name="odom_frame_id" value="nav"/>
+    <param name="odom_frame_id" value="laser_model"/>
     <param name="resample_interval" value="1"/>
     <param name="transform_tolerance" value="0.1"/>
     <param name="recovery_alpha_slow" value="0.0"/>
     <param name="recovery_alpha_fast" value="0.0"/>
   </node>
-
   <!-- ***Put launch command for new planner here:-->
   <!-- Launch the New Planner Node -->
   <!--   <node pkg="f1tenth_simulator" name="new node's name" type="new file name" output="screen">
